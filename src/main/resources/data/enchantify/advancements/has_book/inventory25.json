@@ -1,0 +1,21 @@
+{
+	"criteria": {
+		"has_mending": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"player": [
+					{
+						"condition": "minecraft:entity_properties",
+						"entity": "this",
+						"predicate": {
+							"nbt": "{Inventory:[{Slot:34b, id:\"minecraft:enchanted_book\", tag:{StoredEnchantments:[{id:\"minecraft:mending\"}]}}]}"
+						}
+					}
+				]
+			}
+		}
+	},
+	"rewards": {
+		"function": "enchantify:replace_book/inventory25"
+	}
+}

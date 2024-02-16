@@ -1,0 +1,24 @@
+{
+	"criteria": {
+		"mending_tool": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"enchantments": [
+							{
+								"enchantment": "minecraft:unbreaking",
+								"levels": {
+									"min": 1
+								}
+							}
+						]
+					}
+				]
+			}
+		}
+	},
+	"rewards": {
+		"function": "enchantify:remove_unbreaking"
+	}
+}

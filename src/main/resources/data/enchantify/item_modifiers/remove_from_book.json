@@ -1,0 +1,14 @@
+{
+    "function": "minecraft:copy_nbt",
+    "source": {
+        "type": "storage",
+        "source": "enchantify:item"
+    },
+    "ops": [
+        {
+            "source": "StoredEnchantments",
+            "target": "StoredEnchantments",
+            "op": "replace"
+        }
+    ]
+}

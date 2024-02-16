@@ -1,0 +1,9 @@
+{
+	"parent": "minecraft:item/generated",
+	"textures": {
+		"layer0": "enchantify:item/experience_jar"
+	},
+	"display": {
+		"gui_light": "front"
+	}
+}
