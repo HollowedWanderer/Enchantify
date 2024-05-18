@@ -2,6 +2,8 @@ package net.hollowed.enchantify.common.enchantment;
 
 import net.hollowed.enchantify.EnchantifyMod;
 import net.hollowed.enchantify.common.enchantment.custom.*;
+import net.minecraft.world.item.enchantment.ArrowDamageEnchantment;
+import net.minecraft.world.item.enchantment.DamageEnchantment;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -18,8 +20,6 @@ public class ModEnchantments {
 
     public static final RegistryObject<Enchantment> CLEAVING = REGISTRY.register("cleaving", CleavingEnchant::new);
 
-    public static final RegistryObject<Enchantment> COMBUSTIBILITY = REGISTRY.register("combustibility", CombustibilityEnchant::new);
-
     public static final RegistryObject<Enchantment> COMBO = REGISTRY.register("combo", ComboEnchant::new);
 
     public static final RegistryObject<Enchantment> FROSTBITE = REGISTRY.register("frostbite", FrostbiteEnchant::new);
@@ -29,4 +29,6 @@ public class ModEnchantments {
     public static final RegistryObject<Enchantment> PARRY = REGISTRY.register("parry", ParryEnchant::new);
 
     public static final RegistryObject<Enchantment> BASH = REGISTRY.register("bash", BashEnchant::new);
+
+    public static final RegistryObject<Enchantment> CURSE_OF_SCULKSENSE = REGISTRY.register("curse_of_sculksense", SculksenseEnchant::new);
 }

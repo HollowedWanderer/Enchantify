@@ -28,14 +28,11 @@ public class DoubleJumpPressed {
             return;
         if (entity instanceof LivingEntity _livEnt0 && _livEnt0.hasEffect(ModEffects.COMBAT_LOCKED.get())) {
             if (EnchantmentHelper.getTagEnchantmentLevel(ModEnchantments.DOUBLE_JUMP.get(), _livEnt0.getItemBySlot(EquipmentSlot.LEGS)) != 0 && !entity.onGround()
-                    && !(entity.getCapability(ModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new ModVariables.PlayerVariables())).jumpCooldown) {
+                    && !(entity.getCapability(ModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new ModVariables.PlayerVariables())).jumpCooldown
+                        && (entity.getCapability(ModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new ModVariables.PlayerVariables())).stamina >= 2) {
                 if ((entity instanceof Player _plr ? _plr.getFoodData().getFoodLevel() : 0) > 0) {
                     Player _plr = (Player) entity;
                     if (_plr.getFoodData().getSaturationLevel() > 0) {
-                        Player _player = (Player) entity;
-                        if (Mth.nextInt(RandomSource.create(), 1, 5) == 1) {
-                            _player.getFoodData().setSaturation((int) (_plr.getFoodData().getSaturationLevel() - 2));
-                        }
                         {
                             boolean _setval = true;
                             entity.getCapability(ModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
@@ -83,8 +80,6 @@ public class DoubleJumpPressed {
                                     }
                                 }.checkGamemode(entity))) {
                                     LivingEntity _entity = (LivingEntity) entity;
-                                    if (!_entity.level().isClientSide())
-                                        _player.getFoodData().setFoodLevel((int) (_plr.getFoodData().getFoodLevel() - 2));
                                 }
                             }
                             {
@@ -99,7 +94,7 @@ public class DoubleJumpPressed {
                             if (!_entity.level().isClientSide())
                                 _entity.addEffect(new MobEffectInstance(ModEffects.FEATHER_FALL.get(), 20, 0, false, false));
                             {
-                                double _setval = (entity.getCapability(ModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new ModVariables.PlayerVariables())).stamina + 20;
+                                double _setval = (entity.getCapability(ModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new ModVariables.PlayerVariables())).stamina - 2;
                                 entity.getCapability(ModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
                                     capability.stamina = _setval;
                                     capability.syncPlayerVariables(entity);
@@ -121,7 +116,7 @@ public class DoubleJumpPressed {
                     }
                 }
             }
-        } else {
+        } else if ((entity.getCapability(ModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new ModVariables.PlayerVariables())).stamina >= 2) {
             if (EnchantmentHelper.getTagEnchantmentLevel(ModEnchantments.DOUBLE_JUMP.get(), (entity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.LEGS) : ItemStack.EMPTY)) != 0 && !entity.onGround()
                     && !(entity.getCapability(ModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new ModVariables.PlayerVariables())).jumpCooldown) {
                 if ((entity instanceof Player _plr ? _plr.getFoodData().getFoodLevel() : 0) > 0) {
@@ -149,8 +144,6 @@ public class DoubleJumpPressed {
                                 }
                             }.checkGamemode(entity))) {
                                 LivingEntity _entity = (LivingEntity) entity;
-                                if (!_entity.level().isClientSide())
-                                    _player.getFoodData().setSaturation((int) (_plr.getFoodData().getSaturationLevel() - 1));
                             }
                         }
                         {
@@ -165,7 +158,7 @@ public class DoubleJumpPressed {
                         if (!_entity.level().isClientSide())
                             _entity.addEffect(new MobEffectInstance(ModEffects.FEATHER_FALL.get(), 20, 0, false, false));
                         {
-                            double _setval = (entity.getCapability(ModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new ModVariables.PlayerVariables())).stamina + 20;
+                            double _setval = (entity.getCapability(ModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new ModVariables.PlayerVariables())).stamina - 2;
                             entity.getCapability(ModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
                                 capability.stamina = _setval;
                                 capability.syncPlayerVariables(entity);
@@ -186,9 +179,6 @@ public class DoubleJumpPressed {
                     } else {
                         if (_plr.getFoodData().getFoodLevel() > 6) {
                             Player _player = (Player) entity;
-                            if (Mth.nextInt(RandomSource.create(), 1, 5) == 1) {
-                                _player.getFoodData().setFoodLevel((int) (_plr.getFoodData().getFoodLevel() - 1));
-                            }
                             {
                                 boolean _setval = true;
                                 entity.getCapability(ModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
@@ -201,7 +191,7 @@ public class DoubleJumpPressed {
                             if (!_entity.level().isClientSide())
                                 _entity.addEffect(new MobEffectInstance(ModEffects.FEATHER_FALL.get(), 20, 0, false, false));
                             {
-                                double _setval = (entity.getCapability(ModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new ModVariables.PlayerVariables())).stamina + 20;
+                                double _setval = (entity.getCapability(ModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new ModVariables.PlayerVariables())).stamina - 2;
                                 entity.getCapability(ModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
                                     capability.stamina = _setval;
                                     capability.syncPlayerVariables(entity);

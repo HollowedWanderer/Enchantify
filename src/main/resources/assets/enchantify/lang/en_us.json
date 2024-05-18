@@ -8,11 +8,48 @@
   "enchantment.enchantify.darksight": "Darksight",
   "enchantment.enchantify.strafe": "Strafe",
   "enchantment.enchantify.cleaving": "Cleaving",
-  "enchantment.enchantify.combustibility": "Combustibility",
   "enchantment.enchantify.combo": "Combo",
   "enchantment.enchantify.frostbite": "Frostbite",
   "enchantment.enchantify.parry": "Parry",
   "enchantment.enchantify.bash": "Bash",
   "enchantment.enchantify.leech": "Leech",
-  "item.enchantify.experience_jar": "Jar O' Enchanting"
+  "enchantment.enchantify.curse_of_sculksense": "Curse of Sculksense",
+  "item.enchantify.experience_jar": "Jar O' Enchanting",
+
+  "enchantment.enchantify.dash.desc": "Allows you to dash in your look direction with a keybind.",
+  "enchantment.enchantify.double_jump.desc": "Allows you to jump again in the air.",
+  "enchantment.enchantify.darksight.desc": "Gives you night vision in dark areas.",
+  "enchantment.enchantify.strafe.desc": "Allows you to strafe by holding a movement key (except W) and pressing the strafe keybind.",
+  "enchantment.enchantify.cleaving.desc": "Randomly applies the bleeding effect to hit entities.",
+  "enchantment.enchantify.combo.desc": "Stacks damage every hit until 2x damage but resets when you take damage.",
+  "enchantment.enchantify.frostbite.desc": "Randomly freezes hit entities.",
+  "enchantment.enchantify.parry.desc": "Holds up the weapon for a short time that can parry some attacks.",
+  "enchantment.enchantify.bash.desc": "Knocks back blocked entities.",
+  "enchantment.enchantify.leech.desc": "Steals some life from hit entities.",
+  "enchantment.enchantify.curse_of_sculksense.desc": "Gives nearby mobs, with the exception of players, glowing but gives you blindness.",
+
+  "item.minecraft.potion.effect.freezing": "Potion of Freezing",
+  "item.minecraft.splash_potion.effect.freezing": "Splash Potion of Freezing",
+  "item.minecraft.tipped_arrow.effect.freezing": "Arrow of Freezing",
+  "item.minecraft.lingering_potion.effect.freezing": "Lingering Potion of Freezing",
+
+  "item.minecraft.potion.effect.knives": "Potion of Knives",
+  "item.minecraft.splash_potion.effect.knives": "Splash Potion of Knives",
+  "item.minecraft.tipped_arrow.effect.knives": "Arrow of Knives",
+  "item.minecraft.lingering_potion.effect.knives": "Lingering Potion of Knives",
+
+  "item.minecraft.potion.effect.levitation": "Potion of Levitation",
+  "item.minecraft.splash_potion.effect.levitation": "Splash Potion of Levitation",
+  "item.minecraft.tipped_arrow.effect.levitation": "Arrow of Levitation",
+  "item.minecraft.lingering_potion.effect.levitation": "Lingering Potion of Levitation",
+
+  "item.minecraft.potion.effect.levitationii": "Potion of Levitation",
+  "item.minecraft.splash_potion.effect.levitationii": "Splash Potion of Levitation",
+  "item.minecraft.tipped_arrow.effect.levitationii": "Arrow of Levitation",
+  "item.minecraft.lingering_potion.effect.levitationii": "Lingering Potion of Levitation",
+
+  "item.minecraft.potion.effect.levitation_extend": "Potion of Levitation",
+  "item.minecraft.splash_potion.effect.levitation_extend": "Splash Potion of Levitation",
+  "item.minecraft.tipped_arrow.effect.levitation_extend": "Arrow of Levitation",
+  "item.minecraft.lingering_potion.effect.levitation_extend": "Lingering Potion of Levitation"
 }

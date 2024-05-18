@@ -66,7 +66,9 @@ public class ModVariables {
             PlayerVariables original = ((PlayerVariables) event.getOriginal().getCapability(PLAYER_VARIABLES_CAPABILITY, null).orElse(new PlayerVariables()));
             PlayerVariables clone = ((PlayerVariables) event.getEntity().getCapability(PLAYER_VARIABLES_CAPABILITY, null).orElse(new PlayerVariables()));
             if (!event.isWasDeath()) {
+                clone.combo = original.combo;
                 clone.stamina = original.stamina;
+                clone.healthKeeper = original.healthKeeper;
                 clone.dashCooldown = original.dashCooldown;
                 clone.jumpCooldown = original.jumpCooldown;
                 clone.strafeLeft = original.strafeLeft;
@@ -108,7 +110,11 @@ public class ModVariables {
     }
 
     public static class PlayerVariables {
+
+        public double combo = 0;
         public double stamina = 0;
+
+        public double healthKeeper = 0;
         public boolean dashCooldown = false;
         public boolean jumpCooldown = false;
         public boolean strafeLeft = false;
@@ -123,6 +129,8 @@ public class ModVariables {
 
         public Tag writeNBT() {
             CompoundTag nbt = new CompoundTag();
+            nbt.putDouble("combo", combo);
+            nbt.putDouble("healthKeeper", healthKeeper);
             nbt.putDouble("stamina", stamina);
             nbt.putBoolean("dashCooldown", dashCooldown);
             nbt.putBoolean("jumpCooldown", jumpCooldown);
@@ -135,7 +143,9 @@ public class ModVariables {
 
         public void readNBT(Tag Tag) {
             CompoundTag nbt = (CompoundTag) Tag;
+            combo = nbt.getDouble("combo");
             stamina = nbt.getDouble("stamina");
+            healthKeeper = nbt.getDouble("healthKeeper");
             dashCooldown = nbt.getBoolean("dashCooldown");
             jumpCooldown = nbt.getBoolean("jumpCooldown");
             strafeLeft = nbt.getBoolean("strafeLeft");
@@ -165,7 +175,10 @@ public class ModVariables {
             NetworkEvent.Context context = contextSupplier.get();
             context.enqueueWork(() -> {
                 if (!context.getDirection().getReceptionSide().isServer()) {
+                    assert Minecraft.getInstance().player != null;
                     PlayerVariables variables = ((PlayerVariables) Minecraft.getInstance().player.getCapability(PLAYER_VARIABLES_CAPABILITY, null).orElse(new PlayerVariables()));
+                    variables.combo = message.data.combo;
+                    variables.healthKeeper = message.data.healthKeeper;
                     variables.stamina = message.data.stamina;
                     variables.dashCooldown = message.data.dashCooldown;
                     variables.jumpCooldown = message.data.jumpCooldown;

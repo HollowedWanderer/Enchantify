@@ -1,0 +1,42 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "compatibilityLevel": "JAVA_17",
+  "package": "net.hollowed.enchantify.common.mixin",
+  "refmap": "mixins.enchantify.refmap.json",
+  "mixins": [
+    "ItemStackMixin",
+    "BowMixin",
+    "CrossbowItemMixin",
+    "DamageEnchantmentMixin",
+    "DepthStriderEnchantmentMixin",
+    "EfficiencyEnchantmentMixin",
+    "EnchantmentMixin",
+    "FireAspectEnchantmentMixin",
+    "FortuneEnchantmentMixin",
+    "FrostWalkerEnchantmentMixin",
+    "ImpalingEnchantmentMixin",
+    "KnockbackEnchantmentMixin",
+    "LoyaltyEnchantmentMixin",
+    "LureEnchantmentMixin",
+    "MendingEnchantmentMixin",
+    "PiercingEnchantmentMixin",
+    "PlayerMixin",
+    "PowerEnchantmentMixin",
+    "ProtectionEnchantmentMixin",
+    "PunchEnchantmentMixin",
+    "QuickChargeEnchantmentMixin",
+    "RespirationEnchantmentMixin",
+    "RiptideEnchantmentMixin",
+    "SoulSpeedEnchantmentMixin",
+    "SweepingEnchantmentMixin",
+    "SwiftSneakEnchantmentMixin",
+    "ThornsEnchantmentMixin",
+    "TiersMixin",
+    "TridentMixin",
+    "UnbreakingEnchantmentMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 0
+  }
+}

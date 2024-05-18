@@ -15,23 +15,38 @@ import javax.annotation.Nullable;
 
 @Mod.EventBusSubscriber
 public class StaminaTick {
+    private static final int STAMINA_INCREMENT_TICKS = 40; // Ticks to increment stamina
+    private static final int STAMINA_INCREMENT_AMOUNT = 2; // Amount to increment stamina by
+    private static final int MAX_STAMINA = 20; // Maximum stamina value
+
     @SubscribeEvent
     public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
         if (event.phase == TickEvent.Phase.END) {
-            execute(event, event.player);
+            execute(event.player, event);
         }
     }
 
-    public static void execute(Entity entity) {
-        execute(null, entity);
+    public static void execute(Entity entity, Event event) {
+        execute(null, entity, event);
     }
 
-    private static void execute(@Nullable Event event, Entity entity) {
+    private static void execute(@Nullable Event event, Entity entity, Event tickEvent) {
         if (entity == null)
             return;
-        if ((entity.getCapability(ModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new ModVariables.PlayerVariables())).stamina >= 100) {
-            if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-                _entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 80, 1, false, true));
+
+        // Get player's stamina from capability
+        ModVariables.PlayerVariables playerVariables = entity.getCapability(ModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new ModVariables.PlayerVariables());
+        double stamina = playerVariables.stamina;
+
+        // Increment stamina every STAMINA_INCREMENT_TICKS ticks
+        if (tickEvent instanceof TickEvent && ((TickEvent) tickEvent).type == TickEvent.Type.PLAYER && ((TickEvent.PlayerTickEvent) tickEvent).phase == TickEvent.Phase.END) {
+            if (entity.tickCount % STAMINA_INCREMENT_TICKS == 0 && stamina < MAX_STAMINA) {
+                stamina += STAMINA_INCREMENT_AMOUNT;
+                // Ensure stamina does not exceed MAX_STAMINA
+                playerVariables.stamina = Math.min(stamina, MAX_STAMINA);
+            }
         }
     }
 }
+
+

@@ -14,19 +14,20 @@ public class Strafe {
         if (entity == null)
             return;
         if (!(entity.getCapability(ModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new ModVariables.PlayerVariables())).strafeCooldown
-                && EnchantmentHelper.getTagEnchantmentLevel(ModEnchantments.STRAFE.get(), (entity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.FEET) : ItemStack.EMPTY)) != 0) {
+                && EnchantmentHelper.getTagEnchantmentLevel(ModEnchantments.STRAFE.get(), (entity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.FEET) : ItemStack.EMPTY)) != 0
+                    && (entity.getCapability(ModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new ModVariables.PlayerVariables())).stamina >= 2) {
             if ((entity.getCapability(ModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new ModVariables.PlayerVariables())).strafeLeft) {
                 Vec3 lookDirection = entity.getLookAngle();
                 double leftX = lookDirection.z;
                 double leftZ = -lookDirection.x;
-                entity.setDeltaMovement(new Vec3(leftX, 0.3, leftZ));
+                entity.setDeltaMovement(new Vec3(leftX * 0.8, 0.3, leftZ * 0.8));
 
             } else
             if ((entity.getCapability(ModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new ModVariables.PlayerVariables())).strafeRight) {
                 Vec3 lookDirection = entity.getLookAngle();
                 double leftX2 = -lookDirection.z;
                 double leftZ2 = lookDirection.x;
-                entity.setDeltaMovement(new Vec3(leftX2, 0.3, leftZ2));
+                entity.setDeltaMovement(new Vec3(leftX2 * 0.8, 0.3, leftZ2 * 0.8));
             } else
             if ((entity.getCapability(ModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new ModVariables.PlayerVariables())).strafeBack) {
                 entity.setDeltaMovement(new Vec3((entity.getLookAngle().x * -1), 0.3, (entity.getLookAngle().z * -1)));
@@ -39,7 +40,7 @@ public class Strafe {
                 });
             }
             {
-                double _setval = (entity.getCapability(ModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new ModVariables.PlayerVariables())).stamina + 20;
+                double _setval = (entity.getCapability(ModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new ModVariables.PlayerVariables())).stamina - 2;
                 entity.getCapability(ModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
                     capability.stamina = _setval;
                     capability.syncPlayerVariables(entity);

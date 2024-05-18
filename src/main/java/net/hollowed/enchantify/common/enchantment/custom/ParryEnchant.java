@@ -6,7 +6,7 @@ import net.minecraft.world.item.enchantment.EnchantmentCategory;
 
 public class ParryEnchant extends Enchantment {
     public ParryEnchant(EquipmentSlot... slots) {
-        super(Rarity.UNCOMMON, EnchantmentCategory.WEAPON, slots);
+        super(Rarity.VERY_RARE, EnchantmentCategory.WEAPON, slots);
     }
 
     @Override

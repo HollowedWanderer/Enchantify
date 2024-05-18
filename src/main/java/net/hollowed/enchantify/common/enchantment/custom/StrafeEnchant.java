@@ -6,7 +6,7 @@ import net.minecraft.world.item.enchantment.EnchantmentCategory;
 
 public class StrafeEnchant extends Enchantment {
     public StrafeEnchant(EquipmentSlot... slots) {
-        super(Rarity.UNCOMMON, EnchantmentCategory.ARMOR_FEET, slots);
+        super(Rarity.RARE, EnchantmentCategory.ARMOR_FEET, slots);
     }
 
     @Override

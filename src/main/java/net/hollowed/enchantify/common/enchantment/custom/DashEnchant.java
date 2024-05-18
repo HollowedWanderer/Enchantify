@@ -6,7 +6,7 @@ import net.minecraft.world.item.enchantment.EnchantmentCategory;
 
 public class DashEnchant extends Enchantment {
     public DashEnchant(EquipmentSlot... slots) {
-        super(Rarity.RARE, EnchantmentCategory.ARMOR_CHEST, slots);
+        super(Rarity.VERY_RARE, EnchantmentCategory.ARMOR_CHEST, slots);
     }
 
     @Override

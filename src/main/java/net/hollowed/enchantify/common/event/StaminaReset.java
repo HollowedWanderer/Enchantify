@@ -27,9 +27,23 @@ public class StaminaReset {
         if (entity == null)
             return;
         {
-            double _setval = 0;
+            double _setval = 20;
             entity.getCapability(ModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
                 capability.stamina = _setval;
+                capability.syncPlayerVariables(entity);
+            });
+        }
+        {
+            double _setval = 0;
+            entity.getCapability(ModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
+                capability.combo = _setval;
+                capability.syncPlayerVariables(entity);
+            });
+        }
+        {
+            double _setval = 0;
+            entity.getCapability(ModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
+                capability.healthKeeper = _setval;
                 capability.syncPlayerVariables(entity);
             });
         }
@@ -40,6 +54,6 @@ public class StaminaReset {
                 capability.syncPlayerVariables(entity);
             });
         }
-        StaminaConstant.execute(level, entity);
+        //StaminaConstant.execute(level, entity);
     }
 }

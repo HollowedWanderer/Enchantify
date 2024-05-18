@@ -37,7 +37,7 @@ public class FrostbiteHit {
             return;
         if (EnchantmentHelper.getItemEnchantmentLevel(ModEnchantments.FROSTBITE.get(), (sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0 && Mth.nextInt(RandomSource.create(), 1, 2) == 1) {
             if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-                _entity.addEffect(new MobEffectInstance(ModEffects.FROZEN.get(), 100, 0, false, false));
+                _entity.addEffect(new MobEffectInstance(ModEffects.FROZEN.get(), 200, 0, false, true));
         }
     }
 }

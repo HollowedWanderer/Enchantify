@@ -26,8 +26,9 @@ public class Dash {
         if (entity == null)
             return;
         if (entity instanceof LivingEntity _livEnt0 && _livEnt0.hasEffect(ModEffects.COMBAT_LOCKED.get())) {
-            if (EnchantmentHelper.getTagEnchantmentLevel(ModEnchantments.DASH.get(), _livEnt0.getItemBySlot(EquipmentSlot.CHEST)) != 0 && !entity.onGround()
-                    && !(entity.getCapability(ModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new ModVariables.PlayerVariables())).dashCooldown) {
+                if (EnchantmentHelper.getTagEnchantmentLevel(ModEnchantments.DASH.get(), _livEnt0.getItemBySlot(EquipmentSlot.CHEST)) != 0 && !entity.onGround()
+                    && !(entity.getCapability(ModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new ModVariables.PlayerVariables())).dashCooldown
+                        && (entity.getCapability(ModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new ModVariables.PlayerVariables())).stamina >= 2) {
                 if ((entity instanceof Player _plr ? _plr.getFoodData().getFoodLevel() : 0) > 0) {
                     Player _plr = (Player) entity;
                     if (_plr.getFoodData().getSaturationLevel() > 0) {
@@ -52,9 +53,6 @@ public class Dash {
                                     return false;
                                 }
                             }.checkGamemode(entity))) {
-                                LivingEntity _entity = (LivingEntity) entity;
-                                if (!_entity.level().isClientSide())
-                                    _player.getFoodData().setSaturation((int) (_plr.getFoodData().getSaturationLevel() - 2));
                             }
                         }
                         {
@@ -69,7 +67,7 @@ public class Dash {
                         if (!_entity.level().isClientSide())
                             _entity.addEffect(new MobEffectInstance(ModEffects.FEATHER_FALL.get(), 20, 0, false, false));
                         {
-                            double _setval = (entity.getCapability(ModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new ModVariables.PlayerVariables())).stamina + 20;
+                            double _setval = (entity.getCapability(ModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new ModVariables.PlayerVariables())).stamina - 2;
                             entity.getCapability(ModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
                                 capability.stamina = _setval;
                                 capability.syncPlayerVariables(entity);
@@ -78,9 +76,6 @@ public class Dash {
                     } else {
                         if (_plr.getFoodData().getFoodLevel() > 6) {
                             Player _player = (Player) entity;
-                            if (Mth.nextInt(RandomSource.create(), 1, 5) == 1) {
-                                _player.getFoodData().setFoodLevel((int) (_plr.getFoodData().getFoodLevel() - 2));
-                            }
                             {
                                 boolean _setval = true;
                                 entity.getCapability(ModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
@@ -96,7 +91,7 @@ public class Dash {
                     }
                 }
             }
-        } else {
+        } else if ((entity.getCapability(ModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new ModVariables.PlayerVariables())).stamina >= 2) {
             if (EnchantmentHelper.getTagEnchantmentLevel(ModEnchantments.DASH.get(), (entity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.CHEST) : ItemStack.EMPTY)) != 0 && !entity.onGround()
                     && !(entity.getCapability(ModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new ModVariables.PlayerVariables())).dashCooldown) {
                 if ((entity instanceof Player _plr ? _plr.getFoodData().getFoodLevel() : 0) > 0) {
@@ -123,9 +118,6 @@ public class Dash {
                                     return false;
                                 }
                             }.checkGamemode(entity))) {
-                                LivingEntity _entity = (LivingEntity) entity;
-                                if (!_entity.level().isClientSide())
-                                    _player.getFoodData().setSaturation((int) (_plr.getFoodData().getSaturationLevel() - 1));
                             }
                         }
                         {
@@ -140,7 +132,7 @@ public class Dash {
                         if (!_entity.level().isClientSide())
                             _entity.addEffect(new MobEffectInstance(ModEffects.FEATHER_FALL.get(), 20, 0, false, false));
                         {
-                            double _setval = (entity.getCapability(ModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new ModVariables.PlayerVariables())).stamina + 20;
+                            double _setval = (entity.getCapability(ModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new ModVariables.PlayerVariables())).stamina - 2;
                             entity.getCapability(ModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
                                 capability.stamina = _setval;
                                 capability.syncPlayerVariables(entity);
@@ -149,9 +141,6 @@ public class Dash {
                     } else {
                         if (_plr.getFoodData().getFoodLevel() > 6) {
                             Player _player = (Player) entity;
-                            if (Mth.nextInt(RandomSource.create(), 1, 5) == 1) {
-                                _player.getFoodData().setFoodLevel((int) (_plr.getFoodData().getFoodLevel() - 1));
-                            }
                             {
                                 boolean _setval = true;
                                 entity.getCapability(ModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {

@@ -1,7 +1,0 @@
-{
-    "function": "minecraft:set_enchantments",
-    "add": true,
-    "enchantments": {
-        "minecraft:mending": -1
-    }
-}

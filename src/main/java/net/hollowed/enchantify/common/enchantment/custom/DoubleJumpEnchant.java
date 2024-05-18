@@ -6,6 +6,6 @@ import net.minecraft.world.item.enchantment.EnchantmentCategory;
 
 public class DoubleJumpEnchant extends Enchantment {
     public DoubleJumpEnchant(EquipmentSlot... slots) {
-        super(Rarity.UNCOMMON, EnchantmentCategory.ARMOR_LEGS, slots);
+        super(Rarity.RARE, EnchantmentCategory.ARMOR_LEGS, slots);
     }
 }
